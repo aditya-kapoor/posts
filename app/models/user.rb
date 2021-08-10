@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :posts,
+             -> { not_draft },
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
