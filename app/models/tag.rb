@@ -1,6 +1,9 @@
 class Tag < ApplicationRecord
   # Direct associations
 
+  has_many   :post_tags,
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
