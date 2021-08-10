@@ -1,6 +1,8 @@
 class PostTag < ApplicationRecord
   # Direct associations
 
+  belongs_to :post
+
   # Indirect associations
 
   # Validations

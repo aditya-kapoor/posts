@@ -3,6 +3,9 @@ class Post < ApplicationRecord
 
   # Direct associations
 
+  has_many   :post_tags,
+             :dependent => :destroy
+
   belongs_to :user,
              :required => false
 
