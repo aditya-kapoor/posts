@@ -1,0 +1,135 @@
+<% was_validated = post.errors.any? %>
+
+<%= form_with(model: post, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for published_at start -->
+  <div class="form-group">
+    <% published_at_class = "form-control" %>
+    <% published_at_was_invalid = post.errors.include?(:published_at) %>
+
+    <% if was_validated %>
+      <% if published_at_was_invalid %>
+        <% published_at_class << " is-invalid" %>
+      <% else %>
+        <% published_at_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :published_at %>
+    <!-- Input for published_at start -->
+    <%= f.datetime_select :published_at, class: published_at_class, placeholder: "Enter published at" %>
+    <!-- Input for published_at end -->
+    <% if published_at_was_invalid %>
+      <% post.errors.full_messages_for(:published_at).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for published_at end -->
+  <!-- Label and input for user_id start -->
+  <div class="form-group">
+    <% user_class = "form-control" %>
+    <% user_was_invalid = post.errors.include?(:user) %>
+
+    <% if was_validated %>
+      <% if user_was_invalid %>
+        <% user_class << " is-invalid" %>
+      <% else %>
+        <% user_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :user_id %>
+    <!-- Input for user_id start -->
+    <%= f.number_field :user_id, class: user_class, placeholder: "Enter user" %>
+    <!-- Input for user_id end -->
+    <% if user_was_invalid %>
+      <% post.errors.full_messages_for(:user).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for user_id end -->
+  <!-- Label and input for title start -->
+  <div class="form-group">
+    <% title_class = "form-control" %>
+    <% title_was_invalid = post.errors.include?(:title) %>
+
+    <% if was_validated %>
+      <% if title_was_invalid %>
+        <% title_class << " is-invalid" %>
+      <% else %>
+        <% title_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :title %>
+    <!-- Input for title start -->
+    <%= f.text_field :title, class: title_class, placeholder: "Enter title" %>
+    <!-- Input for title end -->
+    <% if title_was_invalid %>
+      <% post.errors.full_messages_for(:title).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for title end -->
+  <!-- Label and input for html start -->
+  <div class="form-group">
+    <% html_class = "form-control" %>
+    <% html_was_invalid = post.errors.include?(:html) %>
+
+    <% if was_validated %>
+      <% if html_was_invalid %>
+        <% html_class << " is-invalid" %>
+      <% else %>
+        <% html_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :html %>
+    <!-- Input for html start -->
+    <%= f.text_area :html, class: html_class, placeholder: "Enter html" %>
+    <!-- Input for html end -->
+    <% if html_was_invalid %>
+      <% post.errors.full_messages_for(:html).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for html end -->
+  <!-- Label and input for status start -->
+  <div class="form-group">
+    <% status_class = "form-control" %>
+    <% status_was_invalid = post.errors.include?(:status) %>
+
+    <% if was_validated %>
+      <% if status_was_invalid %>
+        <% status_class << " is-invalid" %>
+      <% else %>
+        <% status_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :status %>
+    <!-- Input for status start -->
+    <%= f.number_field :status, class: status_class, placeholder: "Enter status" %>
+    <!-- Input for status end -->
+    <% if status_was_invalid %>
+      <% post.errors.full_messages_for(:status).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for status end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
