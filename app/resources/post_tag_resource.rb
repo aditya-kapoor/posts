@@ -7,6 +7,8 @@ class PostTagResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :post
+
   # Indirect associations
 
 end

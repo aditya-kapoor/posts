@@ -10,6 +10,8 @@ class PostResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :post_tags
+
   belongs_to :user
 
   # Indirect associations
