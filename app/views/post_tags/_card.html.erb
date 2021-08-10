@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Post</dt>
       <!-- Display post_id start -->
-      <dd><%= post_tag.post_id %></dd>
+      <dd>
+        <% if @post_tag.post.present? %>
+          <%= link_to post_tag.post, post_tag.post %>
+        <% end %>
+      </dd>
       <!-- Display post_id end -->
 
       <dt>Tag</dt>
       <!-- Display tag_id start -->
-      <dd><%= post_tag.tag_id %></dd>
+      <dd>
+        <% if @post_tag.tag.present? %>
+          <%= link_to post_tag.tag, post_tag.tag %>
+        <% end %>
+      </dd>
       <!-- Display tag_id end -->
 
     </dl>
