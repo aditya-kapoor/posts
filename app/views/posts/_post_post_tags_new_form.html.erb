@@ -1,22 +1,12 @@
-<!-- Form post_tag start -->
 <%= form_with(model: @post_tag, local: true) do |f| %>
-<!-- Form post_tag end -->
 
-  <!-- Label and input for post_id start -->
-  <!-- Input for post_id start -->
   <%= f.hidden_field :post_id, value: @post.id %>
-  <!-- Input for post_id end -->
-  <!-- Label and input for post_id end -->
 
-  <!-- Label and input for tag_id start -->
   <div class="form-group">
     <%= f.label :tag_id %>
 
-    <!-- Input for tag_id start -->
     <%= f.collection_select :tag_id, Tag.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for tag_id end -->
   </div>
-  <!-- Label and input for tag_id end -->
 
   <%= f.submit "Create post tag", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

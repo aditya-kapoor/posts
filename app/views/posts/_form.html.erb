@@ -1,7 +1,6 @@
 <% was_validated = post.errors.any? %>
 
 <%= form_with(model: post, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for published_at start -->
   <div class="form-group">
     <% published_at_class = "form-control" %>
     <% published_at_was_invalid = post.errors.include?(:published_at) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :published_at %>
-    <!-- Input for published_at start -->
     <%= f.datetime_select :published_at, class: published_at_class, placeholder: "Enter published at" %>
-    <!-- Input for published_at end -->
     <% if published_at_was_invalid %>
       <% post.errors.full_messages_for(:published_at).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for published_at end -->
-  <!-- Label and input for user_id start -->
   <div class="form-group">
     <% user_class = "form-control" %>
     <% user_was_invalid = post.errors.include?(:user) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :user_id %>
-    <!-- Input for user_id start -->
     <%= f.collection_select :user_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for user_id end -->
     <% if user_was_invalid %>
       <% post.errors.full_messages_for(:user).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for user_id end -->
-  <!-- Label and input for title start -->
   <div class="form-group">
     <% title_class = "form-control" %>
     <% title_was_invalid = post.errors.include?(:title) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :title %>
-    <!-- Input for title start -->
     <%= f.text_field :title, class: title_class, placeholder: "Enter title" %>
-    <!-- Input for title end -->
     <% if title_was_invalid %>
       <% post.errors.full_messages_for(:title).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for title end -->
-  <!-- Label and input for html start -->
   <div class="form-group">
     <% html_class = "form-control" %>
     <% html_was_invalid = post.errors.include?(:html) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :html %>
-    <!-- Input for html start -->
     <%= f.text_area :html, class: html_class, placeholder: "Enter html" %>
-    <!-- Input for html end -->
     <% if html_was_invalid %>
       <% post.errors.full_messages_for(:html).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for html end -->
-  <!-- Label and input for status start -->
   <div class="form-group">
     <% status_class = "form-control" %>
     <% status_was_invalid = post.errors.include?(:status) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :status %>
-    <!-- Input for status start -->
     <%= f.select :status, options_for_select(Post.statuses.keys), {}, class: "form-control" %>
-    <!-- Input for status end -->
     <% if status_was_invalid %>
       <% post.errors.full_messages_for(:status).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,6 +111,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for status end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

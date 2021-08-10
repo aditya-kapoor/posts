@@ -10,24 +10,18 @@
   <ul class="list-group list-group-flush">
     <% @tag.post_tags.each do |post_tag| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to post_tag.id, post_tag_path(post_tag) %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <%= link_to post_tag, method: :delete, data: { confirm: "Do you really want to delete this post_tag" } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="tag_post_tags_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "tags/tag_post_tags_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 
