@@ -24,7 +24,12 @@ class PostTagsController < ApplicationController
     @post_tag = PostTag.new(post_tag_params)
 
     if @post_tag.save
-      redirect_to @post_tag, notice: 'Post tag was successfully created.'
+      message = 'PostTag was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @post_tag, notice: message
+      end
     else
       render :new
     end
