@@ -12,6 +12,10 @@ class Post < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :tags,
+             through: :post_tags,
+             source: :tag
+
   # Validations
 
   # Scopes

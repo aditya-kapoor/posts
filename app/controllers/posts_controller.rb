@@ -3,8 +3,8 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).includes(:user,
-                                                :post_tags).page(params[:page]).per(10)
+    @posts = @q.result(distinct: true).includes(:user, :post_tags,
+                                                :tags).page(params[:page]).per(10)
   end
 
   def show

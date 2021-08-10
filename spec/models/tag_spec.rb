@@ -6,6 +6,7 @@ RSpec.describe Tag, type: :model do
   end
 
   describe "InDirect Associations" do
+    it { should have_many(:posts) }
   end
 
   describe "Validations" do
