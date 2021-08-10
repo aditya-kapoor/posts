@@ -3,7 +3,7 @@ class PostTagsController < ApplicationController
 
   # GET /post_tags
   def index
-    @post_tags = PostTag.all
+    @post_tags = PostTag.page(params[:page]).per(10)
   end
 
   # GET /post_tags/1
