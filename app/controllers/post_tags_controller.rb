@@ -3,7 +3,8 @@ class PostTagsController < ApplicationController
 
   # GET /post_tags
   def index
-    @post_tags = PostTag.page(params[:page]).per(10)
+    @q = PostTag.ransack(params[:q])
+    @post_tags = @q.result(:distinct => true).includes(:post, :tag).page(params[:page]).per(10)
   end
 
   # GET /post_tags/1
