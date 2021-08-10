@@ -6,11 +6,15 @@ class Tag < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :posts,
+             through: :post_tags,
+             source: :post
+
   # Validations
 
   # Scopes
 
   def to_s
-    created_at
+    name
   end
 end

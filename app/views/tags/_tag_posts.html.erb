@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Posts
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @tag.posts.each do |post| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <a href="/posts/<%= post.id %>">
+          <%= post %>
+        </a>
+
+      </li>
+    <% end %>
+
+  </ul>
+</div>

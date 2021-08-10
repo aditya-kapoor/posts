@@ -3,7 +3,8 @@ class TagsController < ApplicationController
 
   def index
     @q = Tag.ransack(params[:q])
-    @tags = @q.result(distinct: true).includes(:post_tags).page(params[:page]).per(10)
+    @tags = @q.result(distinct: true).includes(:post_tags,
+                                               :posts).page(params[:page]).per(10)
   end
 
   def show
@@ -46,6 +47,6 @@ class TagsController < ApplicationController
   end
 
   def tag_params
-    params.fetch(:tag, {})
+    params.require(:tag).permit(:name)
   end
 end

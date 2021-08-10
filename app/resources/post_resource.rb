@@ -15,4 +15,6 @@ class PostResource < ApplicationResource
   belongs_to :user
 
   # Indirect associations
+
+  many_to_many :tags
 end
