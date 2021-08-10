@@ -14,5 +14,4 @@ class PostTag < ApplicationRecord
   def to_s
     post.to_s
   end
-
 end

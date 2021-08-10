@@ -15,5 +15,4 @@ class PostResource < ApplicationResource
   belongs_to :user
 
   # Indirect associations
-
 end

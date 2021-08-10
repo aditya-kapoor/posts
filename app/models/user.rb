@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_many   :posts,
              -> { not_draft },
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
@@ -14,5 +14,4 @@ class User < ApplicationRecord
   def to_s
     name
   end
-
 end

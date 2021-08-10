@@ -2,7 +2,7 @@ class Tag < ApplicationRecord
   # Direct associations
 
   has_many   :post_tags,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
@@ -13,5 +13,4 @@ class Tag < ApplicationRecord
   def to_s
     created_at
   end
-
 end

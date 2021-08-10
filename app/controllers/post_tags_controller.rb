@@ -1,15 +1,15 @@
 class PostTagsController < ApplicationController
-  before_action :set_post_tag, only: [:show, :edit, :update, :destroy]
+  before_action :set_post_tag, only: %i[show edit update destroy]
 
   # GET /post_tags
   def index
     @q = PostTag.ransack(params[:q])
-    @post_tags = @q.result(:distinct => true).includes(:post, :tag).page(params[:page]).per(10)
+    @post_tags = @q.result(distinct: true).includes(:post,
+                                                    :tag).page(params[:page]).per(10)
   end
 
   # GET /post_tags/1
-  def show
-  end
+  def show; end
 
   # GET /post_tags/new
   def new
@@ -17,17 +17,16 @@ class PostTagsController < ApplicationController
   end
 
   # GET /post_tags/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /post_tags
   def create
     @post_tag = PostTag.new(post_tag_params)
 
     if @post_tag.save
-      message = 'PostTag was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "PostTag was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @post_tag, notice: message
       end
@@ -39,7 +38,7 @@ class PostTagsController < ApplicationController
   # PATCH/PUT /post_tags/1
   def update
     if @post_tag.update(post_tag_params)
-      redirect_to @post_tag, notice: 'Post tag was successfully updated.'
+      redirect_to @post_tag, notice: "Post tag was successfully updated."
     else
       render :edit
     end
@@ -49,22 +48,22 @@ class PostTagsController < ApplicationController
   def destroy
     @post_tag.destroy
     message = "PostTag was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to post_tags_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post_tag
-      @post_tag = PostTag.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def post_tag_params
-      params.require(:post_tag).permit(:post_id, :tag_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post_tag
+    @post_tag = PostTag.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def post_tag_params
+    params.require(:post_tag).permit(:post_id, :tag_id)
+  end
 end
